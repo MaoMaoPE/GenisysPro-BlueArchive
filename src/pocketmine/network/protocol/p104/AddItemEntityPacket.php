@@ -1,0 +1,35 @@
+<?php
+
+namespace pocketmine\network\protocol\p104;
+
+#include <rules/DataPacket.h>
+
+use \pocketmine\network\protocol\Info102;
+
+class AddItemEntityPacket extends DataPacket
+{
+	const NETWORK_ID = Info102::ADD_ITEM_ENTITY_PACKET;
+
+	public $eid;
+	public $item;
+	public $x;
+	public $y;
+	public $z;
+	public $speedX;
+	public $speedY;
+	public $speedZ;
+
+	public function decode(){
+
+	}
+
+	public function encode(){
+		$this->reset();
+		$this->putEntityId($this->eid); //EntityUniqueID
+		$this->putEntityId($this->eid); //EntityRuntimeID
+		$this->putSlot($this->item);
+		$this->putVector3f($this->x, $this->y, $this->z);
+		$this->putVector3f($this->speedX, $this->speedY, $this->speedZ);
+	}
+
+}
