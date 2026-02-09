@@ -22,6 +22,11 @@
  *
 */
 
+namespace nexon {
+ const BLUEARCHIVE_KR = "블루 아카이브";
+ const BLUEARCHIVE_JP = "ブルーアーカイブ";
+}
+
 namespace pocketmine {
 
 	use pocketmine\utils\Binary;
