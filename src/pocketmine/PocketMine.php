@@ -39,7 +39,7 @@ namespace pocketmine {
 	const NAME = "GenisysPro";
 	const VERSION = "1.1dev";
 	const API_VERSION = "3.0.1";
-	const CODENAME = "블루 아카이브";
+	const CODENAME = "Blue Archive";
 	const GENISYS_API_VERSION = '2.0.0';
 
 	/*
