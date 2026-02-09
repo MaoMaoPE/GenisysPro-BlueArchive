@@ -1,6 +1,5 @@
 {
     "scripts": {
-		"make-server": "@php -dphar.readonly=0 build/BuildScript.php --make ./src --relative ./ --entry src/pocketmine/PocketMine.php --out ./GenisysPro.phar",
-		"make-fnpc": "@php -dphar.readonly=0 build/BuildScript.php --make ./FNPC --out ./FNPC_v1.1.8.phar"
+		"make-server": "@php -dphar.readonly=0 build/BuildScript.php --make ./src --relative ./ --entry src/pocketmine/PocketMine.php --out ./GenisysPro.phar"
 	}
 }	

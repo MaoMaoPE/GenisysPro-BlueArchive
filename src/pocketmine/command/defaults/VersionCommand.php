@@ -62,7 +62,9 @@ class VersionCommand extends VanillaCommand {
 				$sender->getServer()->getName(),
 				$sender->getServer()->getFormattedVersion("-"),
 				$sender->getServer()->getShortGitCommit(),
-				$sender->getServer()->getCodename()
+				$sender->getServer()->getCodename(),//%3
+				\nexon\BLUEARCHIVE_JP,//%4
+				\nexon\BLUEARCHIVE_KR,//%5
 			]));
 			$sender->sendMessage(new TranslationContainer("pocketmine.server.info.extended2", [
 				phpversion(),
