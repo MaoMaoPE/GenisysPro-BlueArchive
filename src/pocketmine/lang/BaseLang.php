@@ -21,8 +21,7 @@
 
 namespace pocketmine\lang;
 
-use pocketmine\event\TextContainer;
-use pocketmine\event\TranslationContainer;
+use pocketmine\event\{ TextContainer, TranslationContainer };
 
 class BaseLang {
 

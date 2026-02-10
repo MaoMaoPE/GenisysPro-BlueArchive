@@ -29,11 +29,13 @@ namespace nexon {
 
 namespace pocketmine {
 
-	use pocketmine\utils\Binary;
-	use pocketmine\utils\MainLogger;
-	use pocketmine\utils\ServerKiller;
-	use pocketmine\utils\Terminal;
-	use pocketmine\utils\Utils;
+	use pocketmine\utils\{
+		Binary,
+		MainLogger,
+		ServerKiller,
+		Terminal,
+		Utils
+	};
 	use pocketmine\wizard\Installer;
 
 	const NAME = "GenisysPro";
