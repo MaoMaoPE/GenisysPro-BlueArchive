@@ -17,7 +17,7 @@
 
 class BaseClassLoader extends \Threaded implements ClassLoader{
 
-	/** @var \ClassLoader */
+	/** @var ClassLoader */
 	private $parent;
 	/** @var string[] */
 	private $lookup;
@@ -113,6 +113,7 @@ class BaseClassLoader extends \Threaded implements ClassLoader{
 	 */
 	public function register($prepend = false){
 		spl_autoload_register([$this, "loadClass"], true, $prepend);
+		return true;
 	}
 
 	/**

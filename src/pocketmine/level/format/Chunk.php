@@ -81,6 +81,8 @@ class Chunk{
     /** @var CompoundTag[] */
     protected $NBTentities = [];
 
+	protected $boimeColors; //为了兼容老插件
+
     /**
      * @param int           $chunkX
      * @param int           $chunkZ
@@ -452,7 +454,7 @@ class Chunk{
      * @return int 0-255
      */
     public function getBiomeId(int $x, int $z) : int{
-        return ord($this->biomeIds{($z << 4) | $x});
+        return ord($this->biomeIds[($z << 4) | $x]);
     }
 
     /**
@@ -464,8 +466,11 @@ class Chunk{
      */
     public function setBiomeId(int $x, int $z, int $biomeId){
         $this->hasChanged = true;
-        $this->biomeIds{($z << 4) | $x} = chr($biomeId & 0xff);
+        $this->biomeIds[($z << 4) | $x] = chr($biomeId & 0xff);
     }
+
+	// 兼容老插件
+	public function setBiomeColor(int $x, int $z) {}
 
     /**
      * Returns a column of block IDs from bottom to top at the specified X/Z chunk block coordinates.

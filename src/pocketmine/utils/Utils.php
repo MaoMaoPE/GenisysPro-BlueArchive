@@ -436,7 +436,7 @@ class Utils {
 	public static function javaStringHash($string){
 		$hash = 0;
 		for($i = 0; $i < strlen($string); $i++){
-			$ord = ord($string{$i});
+			$ord = ord($string[$i]);
 			if($ord & 0x80){
 				$ord -= 0x100;
 			}
@@ -450,6 +450,22 @@ class Utils {
 			$hash &= 0xFFFFFFFF;
 		}
 		return $hash;
+	}
+
+	/**
+	 * Extracts one-line tags from the doc-comment
+	 *
+	 * @return string[] an array of tagName => tag value. If the tag has no value, an empty string is used as the value.
+	 */
+	public static function parseDocComment(string $docComment) : array{
+		$rawDocComment = substr($docComment, 3, -2); //remove the opening and closing markers
+		if($rawDocComment === false){ //usually empty doc comment, but this is safer and statically analysable
+			return [];
+		}
+		preg_match_all('/(*ANYCRLF)^[\t ]*(?:\* )?@([a-zA-Z]+)(?:[\t ]+(.+?))?[\t ]*$/m', $rawDocComment, $matches);
+
+		$result = array_combine($matches[1], $matches[2]);
+		return $result;
 	}
 
 }

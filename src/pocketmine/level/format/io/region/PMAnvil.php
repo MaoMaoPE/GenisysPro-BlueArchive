@@ -139,8 +139,8 @@ class PMAnvil extends Anvil {
 			}
 
 			$result = new Chunk(
-				$chunk["xPos"],
-				$chunk["zPos"],
+				(int)$chunk["xPos"],
+                (int)$chunk["zPos"],
 				$subChunks,
 				isset($chunk->Entities) ? $chunk->Entities->getValue() : [],
 				isset($chunk->TileEntities) ? $chunk->TileEntities->getValue() : [],

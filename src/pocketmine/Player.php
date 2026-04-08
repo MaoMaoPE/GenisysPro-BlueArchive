@@ -745,12 +745,17 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 		$data = new \stdClass();
 		$count = 0;
 		foreach($this->server->getCommandMap()->getCommands() as $command){
-			//if($this->hasPermission($command->getPermission()) or $command->getPermission() == null) {
-				if (($cmdData = $command->generateCustomCommandData($this)) !== null){
-					++$count;
-					$data->{$command->getName()}->versions[0] = $cmdData;
+			if (($cmdData = $command->generateCustomCommandData($this)) !== null){
+				++$count;
+				if(!isset($data->{$command->getName()})){
+					$data->{$command->getName()} = new \stdClass();
 				}
-			//}
+				if(!isset($data->{$command->getName()}->versions)){
+					$data->{$command->getName()}->versions = [];
+				}
+				$data->{$command->getName()}->versions[0] = $cmdData;
+			}
+
 		}
 
 		if($count > 0){
@@ -2441,7 +2446,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 					$valid = false;
 				}
 				for($i = 0; $i < $len and $valid; ++$i){
-					$c = ord($packet->username{$i});
+					$c = ord($packet->username[$i]);
 					if(($c >= ord("a") and $c <= ord("z")) or ($c >= ord("A") and $c <= ord("Z")) or ($c >= ord("0") and $c <= ord("9")) or $c === ord("_")){
 						continue;
 					}

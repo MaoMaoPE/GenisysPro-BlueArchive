@@ -118,7 +118,7 @@ class Binary {
 	 */
 	public static function readByte($c, $signed = true){
 		self::checkLength($c, 1);
-		$b = ord($c{0});
+		$b = ord($c[0]);
 
 		if($signed){
 			if(PHP_INT_SIZE === 8){
@@ -496,5 +496,14 @@ class Binary {
 			$value = (($value >> 7) & (PHP_INT_MAX >> 6)); //PHP really needs a logical right-shift operator
 		}
 		throw new \InvalidArgumentException("Value too large to be encoded as a varint");
+	}
+
+	/**
+	 * @param $value
+	 *
+	 * @return string
+	 */
+	public static function signInt($value) {
+		return $value << 32 >> 32;
 	}
 }
